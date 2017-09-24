@@ -66,12 +66,12 @@ z = Lambda(sampling, output_shape=(latent_dim,))([z_mean, z_log_var])
 
 # we instantiate these layers separately so as to reuse them later
 decoder_hid = Dense(intermediate_dim, activation='relu')
-decoder_upsample = Dense(filters * 32 * 32, activation='relu')
+decoder_upsample = Dense(filters * (img_rows/2) * (img_cols/2), activation='relu')
 
 if K.image_data_format() == 'channels_first':
-    output_shape = (batch_size, filters, 32, 32)
+    output_shape = (batch_size, filters, (img_rows/2), (img_cols/2))
 else:
-    output_shape = (batch_size, 32, 32, filters)
+    output_shape = (batch_size, (img_rows/2), (img_cols/2), filters)
 
 decoder_reshape = Reshape(output_shape[1:])
 decoder_deconv_1 = Conv2DTranspose(filters,
