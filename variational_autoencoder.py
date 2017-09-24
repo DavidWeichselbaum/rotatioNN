@@ -64,7 +64,7 @@ print(vae.summary())
 vae.compile(optimizer=keras.optimizers.RMSprop(clipnorm=1), loss=None) # clipnorm to prevent binary crossentropy to go out of bounds
 
 data = np.load('cubes.npy')
-# data = data[:1000]
+data = data[:3000]
 data = data.astype(float)
 print('Data shape: %s' % (str(data.shape)))
 data_length = len(data)

@@ -1,1 +1,2 @@
-cubes.npy
+*.npy
+*.png
